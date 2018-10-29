@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--启用spring annotation , 如果启用了component-scan 就不需要此配置了
+    <context:annotation-config/>
+    -->
+
+    <!--注册驱动-->
+    <mvc:annotation-driven>
+
+        <!-- 以下是spring4.2+ 用fastjson替换spring自带的json框架的配置 -->
+        <mvc:message-converters register-defaults="true">
+            <ref bean="stringHttpMessageConverter"/>
+            <ref bean="fastJsonHttpMessageConverter"/>
+        </mvc:message-converters>
+
+    </mvc:annotation-driven>
+
+    <bean id="stringHttpMessageConverter"
+          class="org.springframework.http.converter.StringHttpMessageConverter">
+        <constructor-arg value="UTF-8" index="0"></constructor-arg>
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/plain;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+        <property name="fastJsonConfig">
+            <bean class="com.alibaba.fastjson.support.config.FastJsonConfig">
+                <property name="features">
+                    <list>
+                        <value>AllowArbitraryCommas</value>
+                        <value>AllowUnQuotedFieldNames</value>
+                        <value>DisableCircularReferenceDetect</value>
+                    </list>
+                </property>
+                <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"></property>
+            </bean>
+        </property>
+    </bean>
+
+
+    <!--<mvc:default-servlet-handler/>-->
+    <!--  自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器  -->
+    <context:component-scan base-package="com.jiangyuqin.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--配置视图解析器-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <mvc:resources mapping="/lib/**" location="/static"/>
+
+</beans>

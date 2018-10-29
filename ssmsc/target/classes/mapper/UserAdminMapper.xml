@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiangyuqin.mapper.UserAdminMapper">
+    <select id="getUser" parameterType="java.util.Map" resultType="com.jiangyuqin.model.UsrAdmin">
+        SELECT *
+        FROM Z_USR_ADMIN
+        where dacc = #{param.dacc}
+    </select>
+    <insert id="insertUser" parameterType="java.util.Map">
+        INSERT INTO Z_USR_ADMIN
+          (UUID, DACC, DPWD, NICKNAME, LASTLOGIN, YXBZ)
+        VALUES
+          (#{param.uuid}, #{param.dacc}, #{param.dpwd}, #{param.nickname}, #{param.lastlogin}, #{param.yxbz});
+    </insert>
+    <select id="selectAll" resultType="com.jiangyuqin.model.UsrAdmin">
+        SELECT * FROM Z_USR_ADMIN
+    </select>
+    <update id="update" parameterType="java.util.Map">
+        UPDATE Z_USR_ADMIN
+        SET NICKNAME = #{param.nickname}
+        WHERE DACC = #{param.dacc}
+    </update>
+</mapper>
