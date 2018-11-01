@@ -1,14 +1,15 @@
 package com.jiangyuqin.controller;
 
+import com.jiangyuqin.constance.Constance;
 import com.jiangyuqin.model.UsrAdmin;
 import com.jiangyuqin.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,9 +18,11 @@ import java.util.List;
 @Controller
 @RequestMapping("user")
 public class UserController {
-    @Autowired
+    @Resource
     private IUserService userService;
     Logger log = LoggerFactory.getLogger(UserController.class);
+    /*@Resource
+    private IBaseService baseService;*/
 
     @RequestMapping("select")
     @ResponseBody
@@ -32,17 +35,21 @@ public class UserController {
         return user;
     }
     @RequestMapping("addUser")
-    public Object insertUser(int id,String name,int age,String sex){
-        userService.insertUser(id,name,age,sex);
+    @ResponseBody
+    public Object insertUser(String name){
+        userService.insertUser(name);
         return "OK";
     }
 
     @RequestMapping("selectAll")
     @ResponseBody
     public List<UsrAdmin> selectAll(){
-        log.info("发起全量查询请求！");
+        if (Constance.valueOf("SYSDEBUGE").booleanValue){
+            log.info("发起全量查询请求！");
+        }
         return userService.selectAll();
     }
+
     @RequestMapping("update")
     public Object update(){
         return userService.update();

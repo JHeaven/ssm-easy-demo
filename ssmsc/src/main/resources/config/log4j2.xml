@@ -25,7 +25,7 @@
     </Appenders>
     <Loggers>
 
-        <Root level="info">
+        <Root level="debug">
             <!-- 输入到文件-->
             <AppenderRef ref="running-log"/>
             <!-- 输入到控制台-->

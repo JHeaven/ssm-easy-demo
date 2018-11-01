@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiangyuqin.mapper.DbaDatasourceMapper">
+  <resultMap id="BaseResultMap" type="com.jiangyuqin.model.DbaDatasource">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="UUID" jdbcType="VARCHAR" property="uuid" />
+    <result column="DBTYPE" jdbcType="VARCHAR" property="dbtype" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="IPADDRESS" jdbcType="VARCHAR" property="ipaddress" />
+    <result column="SERVICENAME" jdbcType="VARCHAR" property="servicename" />
+    <result column="YXBZ" jdbcType="CHAR" property="yxbz" />
+  </resultMap>
+</mapper>

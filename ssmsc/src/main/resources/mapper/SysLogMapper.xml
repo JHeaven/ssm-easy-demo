@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiangyuqin.mapper.SysLogMapper">
+  <resultMap id="BaseResultMap" type="com.jiangyuqin.model.SysLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="UUID" jdbcType="VARCHAR" property="uuid" />
+    <result column="FUUID" jdbcType="VARCHAR" property="fuuid" />
+    <result column="FTYPE" jdbcType="VARCHAR" property="ftype" />
+    <result column="FCONTENT" jdbcType="VARCHAR" property="fcontent" />
+    <result column="FTIME" jdbcType="TIMESTAMP" property="ftime" />
+  </resultMap>
+</mapper>

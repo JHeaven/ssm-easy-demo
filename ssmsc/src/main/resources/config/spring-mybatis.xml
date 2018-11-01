@@ -28,8 +28,10 @@
         <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
     </bean>
 
-    <!--扫描mapper接口包-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!--扫描mapper接口包
+        mybatis:org.mybatis.spring.mapper.MapperScannerConfigurer
+    -->
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.**.mapper"/>
         <property name="sqlSessionFactoryBeanName" >
             <idref bean="SqlSessionFactory"/>

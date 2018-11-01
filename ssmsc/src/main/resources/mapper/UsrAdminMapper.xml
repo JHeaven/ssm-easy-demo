@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiangyuqin.mapper.UsrAdminMapper">
+  <resultMap id="BaseResultMap" type="com.jiangyuqin.model.UsrAdmin">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="UUID" jdbcType="VARCHAR" property="uuid" />
+    <result column="DACC" jdbcType="VARCHAR" property="dacc" />
+    <result column="DPWD" jdbcType="VARCHAR" property="dpwd" />
+    <result column="NICKNAME" jdbcType="VARCHAR" property="nickname" />
+    <result column="LASTLOGIN" jdbcType="TIMESTAMP" property="lastlogin" />
+    <result column="YXBZ" jdbcType="CHAR" property="yxbz" />
+  </resultMap>
+</mapper>

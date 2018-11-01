@@ -8,9 +8,12 @@ import java.util.List;
  *
  */
 public interface IUserService {
+
+
+
     List<UsrAdmin> getUser(String dacc);
 
-    Integer insertUser(int id, String name, int age, String sex);
+    Integer insertUser(String name);
 
     List<UsrAdmin> selectAll();
 

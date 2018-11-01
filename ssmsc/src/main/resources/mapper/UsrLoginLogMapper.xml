@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiangyuqin.mapper.UsrLoginLogMapper">
+  <resultMap id="BaseResultMap" type="com.jiangyuqin.model.UsrLoginLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="UUID" jdbcType="VARCHAR" property="uuid" />
+    <result column="USERUUID" jdbcType="VARCHAR" property="useruuid" />
+    <result column="LOGINTIME" jdbcType="TIMESTAMP" property="logintime" />
+    <result column="LOGINFLAG" jdbcType="CHAR" property="loginflag" />
+    <result column="LOGINPASS" jdbcType="VARCHAR" property="loginpass" />
+    <result column="YXBZ" jdbcType="CHAR" property="yxbz" />
+  </resultMap>
+</mapper>
